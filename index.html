@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#009246">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>PegPizza - Cardápio Italiano</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#hero"><img src="PegPizza.jpg" alt="Logo PegPizza" class="header-logo"></a>
+                <div class="logo-text">
+                    <a href="#hero"><h1>PegPizza</h1></a>
+                    <p class="tagline">Feita com massa típica italiana e molho secreto de família</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#promocao">Promoções</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#contato" class="contact-btn">(12) 99223-6923</a></li>
+                    <li><button onclick="toggleCarrinho()" class="carrinho-btn">
+                        🛒 <span id="carrinho-count">0</span>
+                    </button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <img src="PegPizza.jpg" alt="Logo PegPizza" class="hero-logo">
+                    <h1>Autêntica Pizzaria Italiana</h1>
+                    <p>Todas as pizzas contêm molho de tomate, queijo mussarela e azeitonas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="promocao" class="promo-section">
+            <div class="container">
+                <h2>🔥 PROMOÇÕES ESPECIAIS E PREÇOS</h2>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <h3>COMBO DOCE</h3>
+                        <div class="promo-visual">
+                            <div class="promo-item-box">
+                                <div class="item-icon">🍕</div>
+                                <span>Pizza 35cm Salgada</span>
+                            </div>
+                            <div class="promo-plus">+</div>
+                            <div class="promo-item-box">
+                                <div class="item-icon">🍫</div>
+                                <span>Pizza 25cm Doce</span>
+                            </div>
+                            <div class="promo-equals">=</div>
+                            <div class="promo-item-box refri-box">
+                                <div class="item-icon">🥤</div>
+                                <span>Refri 2L GRÁTIS</span>
+                            </div>
+                        </div>
+                        <div class="promo-price">
+                            <span class="old-price">R$ 98,00</span>
+                            <span class="new-price">R$ 85,00</span>
+                        </div>
+                        <button onclick="iniciarPromo('doce')" class="promo-btn">PEDIR PROMOÇÃO</button>
+                    </div>
+                    <div class="promo-card">
+                        <h3>COMBO SALGADO</h3>
+                        <div class="promo-visual">
+                            <div class="promo-item-box">
+                                <div class="item-icon">🍕</div>
+                                <span>Pizza 35cm Salgada</span>
+                            </div>
+                            <div class="promo-plus">+</div>
+                            <div class="promo-item-box">
+                                <div class="item-icon">🍕</div>
+                                <span>Pizza 25cm Salgada</span>
+                            </div>
+                            <div class="promo-equals">=</div>
+                            <div class="promo-item-box refri-box">
+                                <div class="item-icon">🥤</div>
+                                <span>Refri 2L GRÁTIS</span>
+                            </div>
+                        </div>
+                        <div class="promo-price">
+                            <span class="old-price">R$ 103,00</span>
+                            <span class="new-price">R$ 90,00</span>
+                        </div>
+                        <button onclick="iniciarPromo('salgado')" class="promo-btn">PEDIR PROMOÇÃO</button>
+                    </div>
+                </div>
+                
+                <!-- Tabela de Preços Simplificada -->
+                <div class="price-table">
+                    <h3>💰 Preços Individuais</h3>
+                    <div class="price-row">
+                        <span>Pizza 25cm (Salgada)</span>
+                        <span>R$ 30,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Pizza 25cm (Doce)</span>
+                        <span>R$ 25,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Pizza 35cm</span>
+                        <span>R$ 60,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>coca-cola 2L</span>
+                        <span>R$ 13,00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>outros 2L</span>
+                        <span>R$ 10,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cardapio" class="menu-section">
+            <div class="container">
+                <div class="menu-tabs">
+                    <button class="tab-btn active" onclick="showMenu('salgada')">🍕 Pizzas Salgadas</button>
+                    <button class="tab-btn" onclick="showMenu('doce')">🍫 Pizzas Doces</button>
+                </div>
+                
+                <div class="pizza-options">
+                    <button class="option-btn active" onclick="showOption('individual')">Pizza Individual</button>
+                    <button class="option-btn" onclick="showOption('dois-sabores')">Dois Sabores</button>
+                </div>
+                
+                <!-- Pizza Individual -->
+                <div id="individual-menu" class="menu-content active">
+                    <div id="pizzas-salgadas" class="pizza-list">
+                        <!-- Pizzas salgadas serão inseridas aqui -->
+                    </div>
+                    <div id="pizzas-doces" class="pizza-list" style="display: none;">
+                        <!-- Pizzas doces serão inseridas aqui -->
+                    </div>
+                </div>
+                
+                <!-- Dois Sabores -->
+                <div id="dois-sabores-menu" class="menu-content" style="display: none;">
+                    <div class="dois-sabores-selector">
+                        <h3>Escolha o tamanho:</h3>
+                        <div class="size-buttons">
+                            <button onclick="initDoisSabores('25cm')" class="size-btn">25cm - 2 Sabores</button>
+                            <button onclick="initDoisSabores('35cm')" class="size-btn">35cm - 3 Sabores</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contact-section">
+            <div class="container">
+                <h2><i class="fas fa-phone"></i> Entre em Contato</h2>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <p>+55 12 99223-6923</p>
+                        <a href="https://wa.me/5512992236923" target="_blank" class="contact-btn">Fazer Pedido</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 PegPizza - Sabor Italiano Autêntico</p>
+            <div class="social-links">
+                <a href="https://wa.me/5512992236923" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrinho Sidebar -->
+    <div id="carrinho-sidebar" class="carrinho-sidebar">
+        <div class="carrinho-header">
+            <h3>🛒 Seu Pedido</h3>
+            <button onclick="toggleCarrinho()" class="close-btn">&times;</button>
+        </div>
+        <div id="carrinho-items" class="carrinho-items">
+            <!-- Itens do carrinho serão inseridos aqui -->
+        </div>
+        <div id="carrinho-total" class="carrinho-total" style="display: none;">
+            <button onclick="limparCarrinho()" class="clear-btn">Limpar Carrinho</button>
+            <button onclick="enviarPedido()" class="order-btn">
+                <i class="fab fa-whatsapp"></i> Fazer Pedido
+            </button>
+        </div>
+    </div>
+    
+    <!-- Overlay do carrinho -->
+    <div id="carrinho-overlay" class="carrinho-overlay" onclick="toggleCarrinho()"></div>
+    
+    <!-- Modal Dois Sabores -->
+    <div id="dois-sabores-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Escolha os Sabores</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="sabores-selection"></div>
+                <div class="modal-actions">
+                    <button onclick="addDoisSaboresToCart()" class="add-btn">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Promoção -->
+    <div id="promo-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="promo-title">Escolha os Sabores da Promoção</h3>
+                <span class="close" onclick="closePromoModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="promo-selection"></div>
+                <div class="modal-actions">
+                    <button onclick="addPromoToCart()" class="add-btn">Adicionar Promoção ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
